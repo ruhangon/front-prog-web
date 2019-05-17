@@ -8,19 +8,25 @@ import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
 import {TooltipModule} from 'primeng/tooltip';
 import { ToastModule } from 'primeng/toast';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { FormsModule } from '@angular/forms';
+import { CategoriasCadastroComponent } from './categorias-cadastro/categorias-cadastro.component';
 
 @NgModule({
-  declarations: [CategoriasPesquisaComponent],
+  declarations: [CategoriasPesquisaComponent, CategoriasCadastroComponent],
   imports: [
     CommonModule,
     InputTextModule,
     ButtonModule,
     TableModule,
     TooltipModule,
-    ToastModule
+    ToastModule,
+    ConfirmDialogModule,
+    FormsModule
   ],
   exports: [
-    CategoriasPesquisaComponent
+    CategoriasPesquisaComponent,
+    CategoriasCadastroComponent
   ],
   providers: [
     CategoriasService

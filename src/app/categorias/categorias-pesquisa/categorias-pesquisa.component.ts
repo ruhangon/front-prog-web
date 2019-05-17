@@ -1,4 +1,4 @@
-import { MessageService } from 'primeng/api';
+import { MessageService, ConfirmationService } from 'primeng/api';
 import { CategoriasService } from './../categorias.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,10 +10,12 @@ import { Component, OnInit } from '@angular/core';
 export class CategoriasPesquisaComponent implements OnInit {
 
   categorias = [];
+  filtro: string;
 
   constructor(
     private service:CategoriasService,
-    private msgService: MessageService
+    private msgService: MessageService,
+    private conf: ConfirmationService
   ) { }
 
   ngOnInit() {
@@ -21,9 +23,18 @@ export class CategoriasPesquisaComponent implements OnInit {
   }
 
   pesquisar(){
-    this.service.pesquisar()
+    this.service.pesquisar({nome:this.filtro})
     .then((dados)=>{
       this.categorias=dados;
+    });
+  }
+
+  confirmarExclusao(categoria:any){
+    this.conf.confirm({
+      message: 'Tem certeza que deseja excluir '+categoria.nome+'?',
+      accept: () => {
+        this.excluir(categoria);
+      }
     });
   }
 

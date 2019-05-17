@@ -1,24 +1,30 @@
 <p-toast></p-toast>
+<p-confirmDialog header="Confirmação"
+   icon="pi pi-question-circle"
+   acceptLabel="Sim"
+   rejectLabel="Não"></p-confirmDialog>
+
 <div class="container">
-  <div class="ui-g">
+  <form autocomplete="off" (ngSubmit)="pesquisar()">
+    <div class="ui-g">
 
-    <div class="ui-g-12">
-      <h1>
-        Categorias
-      </h1>
+      <div class="ui-g-12">
+        <h1>
+          Categorias
+        </h1>
+      </div>
+
+      <div class="ui-g-12 ui-fluid">
+          <label>Descrição</label>
+          <input pInputText type="text" name="descricao"  [(ngModel)]="filtro">
+      </div>
+
+      <div class="ui-g-12">
+          <button pButton type="submit" label="Pesquisar"></button>
+      </div>
+
     </div>
-
-    <div class="ui-g-12 ui-fluid">
-        <label>Descrição</label>
-        <input pInputText type="text">
-    </div>
-
-    <div class="ui-g-12">
-        <button pButton type="submit" label="Pesquisar"></button>
-    </div>
-
-  </div>
-
+  </form>
   <div class="ui-g">
       <div class="ui-g-12">
           <p-table [value]="categorias" [paginator]="true" [rows]="3" [responsive]="true">
@@ -36,7 +42,7 @@
                     <td>{{cat.nome}}</td>
                     <td class="col-acoes">
                         <button pButton icon="pi pi-pencil" pTooltip="Editar"  tooltipPosition="top" showDelay="1000"  class="ui-button-info"></button>
-                        <button pButton icon="pi pi-trash"  pTooltip="Excluir" tooltipPosition="top" showDelay="1000"  (click)="excluir(cat)" class="ui-button-danger"></button>
+                        <button pButton icon="pi pi-trash"  pTooltip="Excluir" tooltipPosition="top" showDelay="1000"  (click)="confirmarExclusao(cat)" class="ui-button-danger"></button>
                     </td>
                   </tr>
                 </ng-template>

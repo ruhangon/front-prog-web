@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
 import {ToastModule} from 'primeng/toast';
 
 import { AppComponent } from './app.component';
-import { MessageService } from 'primeng/api';
+import { MessageService, ConfirmationService } from 'primeng/api';
 
 
 @NgModule({
@@ -20,7 +20,11 @@ import { MessageService } from 'primeng/api';
     HttpClientModule,
     ToastModule
   ],
-  providers: [MessageService],
+  providers: [
+    MessageService,
+    ConfirmationService
+  ]
+    ,
   bootstrap: [AppComponent]
 })
 export class AppModule { }
